@@ -26,10 +26,23 @@ android {
         }
     }
 
+    flavorDimensions "version"
+    productFlavors {
+        grameenphone {
+            dimension "version"
+            resValue "string", "app_name", "Codemasters Grameephone"
+        }
+
+        telenor {
+            dimension "version"
+            resValue "string", "app_name", "Codemasters Telenor"
+        }
+    }
+
     buildFeatures {
         viewBinding true
     }
-    
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8

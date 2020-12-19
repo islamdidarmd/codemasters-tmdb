@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">Codemasters TMDB</string>
     <string name="discover">Discover</string>
     <string name="wish_list">Wish list</string>
     <string name="popular_movies">Popular Movies</string>
