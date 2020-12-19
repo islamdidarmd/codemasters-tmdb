@@ -25,13 +25,10 @@ class WishListAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(position)
         holder._binding.apply {
-            tvTitle.text = item.title
+            tvTitle.text = item.title ?: item.name
             tvRating.text = item.vote_average.toString()
-            ivPoster.load(item.poster?.toPosterImageUrl()) {
-                error(R.mipmap.ic_launcher)
-                fallback(R.mipmap.ic_launcher)
-                placeholder(R.mipmap.ic_launcher)
-            }
+            tvOverView.text = item.overview
+            ivPoster.load(item.poster?.toPosterImageUrl())
         }
     }
 

@@ -7,14 +7,23 @@ data class Trending(
     val id: Int,
 
     @SerializedName("title")
-    val title: String,
+    val title: String?,
+
+    @SerializedName("name")
+    val name: String?,
 
     @SerializedName("release_date")
-    val releaseDate: String,
+    val releaseDate: String?,
 
-    @SerializedName("vote_average")
-    val voteAverage: Double,
+    @SerializedName("first_air_date")
+    val firstAirDate: String,
+
+    @SerializedName("vote_count")
+    val voteCount: Int,
 
     @SerializedName("poster_path")
-    val poster: String? = null
+    val poster: String? = null,
+
+    @SerializedName("media_type")
+    val mediaType: String
 )

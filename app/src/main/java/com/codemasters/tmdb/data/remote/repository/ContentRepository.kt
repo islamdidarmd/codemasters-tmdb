@@ -3,8 +3,6 @@ package com.codemasters.tmdb.data.remote.repository
 import com.codemasters.tmdb.data.model.*
 import com.codemasters.tmdb.data.remote.ApiClient.createApiService
 import com.codemasters.tmdb.data.remote.ApiService
-import com.google.gson.Gson
-import retrofit2.Response
 
 class ContentRepository : BaseRepository() {
     suspend fun getPopularMovies(): PaginatedResponse<Movie>? {
@@ -40,10 +38,10 @@ class ContentRepository : BaseRepository() {
         }
     }
 
-    suspend fun getContentDetails(contentType: ContentType, id: Int): ContentDetails? {
+    suspend fun getContentDetails(mediaType: String, id: Int): ContentDetails? {
         return try {
             val api = createApiService<ApiService>()
-            val response = api.getContentDetails(contentType.name, id)
+            val response = api.getContentDetails(mediaType, id)
             handleApiResponse(response)
         } catch (e: Exception) {
             e.printStackTrace()

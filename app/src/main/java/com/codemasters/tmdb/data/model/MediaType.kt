@@ -1,6 +1,6 @@
 package com.codemasters.tmdb.data.model
 
-enum class ContentType {
+enum class MediaType {
     movie,
     tv
 }

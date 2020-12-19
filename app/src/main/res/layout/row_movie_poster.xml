@@ -17,8 +17,8 @@
         android:layout_gravity="center_horizontal"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
-        app:shapeAppearance="@style/ShapeAppearanceOverlay.Poster"
-        tools:src="@mipmap/ic_launcher" />
+        android:background="@color/gray_300"
+        app:shapeAppearance="@style/ShapeAppearanceOverlay.Poster" />
 
     <TextView
         android:id="@+id/tvTitle"
@@ -36,7 +36,8 @@
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="1"
-        android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+        android:textColor="@color/black"
+        android:textSize="12sp"
         tools:text="@string/app_name" />
 
     <TextView
@@ -45,6 +46,8 @@
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="1"
+        android:textColor="@color/black"
+        android:textSize="12sp"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
-        tools:text="@string/app_name" />
+        android:text="@string/d_votes" />
 </LinearLayout>

@@ -3,6 +3,7 @@ package com.codemasters.tmdb.ui.discover
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -12,6 +13,7 @@ import com.codemasters.tmdb.data.model.Movie
 import com.codemasters.tmdb.data.model.Trending
 import com.codemasters.tmdb.data.model.TvSeries
 import com.codemasters.tmdb.databinding.RowMoviePosterBinding
+import com.codemasters.tmdb.utils.toDateFormat
 import com.codemasters.tmdb.utils.toPosterImageUrl
 
 class HorizontalListAdapter<T>(
@@ -30,34 +32,30 @@ class HorizontalListAdapter<T>(
             when (item) {
                 is Movie -> {
                     tvTitle.text = item.title
-                    tvReleaseDate.text = item.releaseDate
-                    tvVoteCount.text = item.voteCount.toString()
-                    ivPoster.load(item.poster?.toPosterImageUrl()){
-                        error(R.mipmap.ic_launcher)
-                        fallback(R.mipmap.ic_launcher)
-                        placeholder(R.mipmap.ic_launcher)
-                    }
+                    tvReleaseDate.text = item.releaseDate.toDateFormat("yyyy-MM-dd", "dd MMM yyyy")
+
+                    tvVoteCount.text = root.resources.getString(R.string.d_votes, item.voteCount )
+
+                    ivPoster.load(item.poster?.toPosterImageUrl())
                 }
                 is TvSeries -> {
                     tvTitle.text = item.title
                     tvReleaseDate.text = item.releaseDate
-                    tvVoteCount.text = item.voteCount.toString()
-                    ivPoster.load(item.poster?.toPosterImageUrl()){
-                        error(R.mipmap.ic_launcher)
-                        fallback(R.mipmap.ic_launcher)
-                        placeholder(R.mipmap.ic_launcher)
-                    }
+
+                    tvVoteCount.text = root.resources.getString(R.string.d_votes, item.voteCount )
+
+                    ivPoster.load(item.poster?.toPosterImageUrl())
                 }
 
                 is Trending -> {
-                    tvTitle.text = item.title
-                    tvReleaseDate.text = item.releaseDate
-                    tvVoteCount.text = item.voteAverage.toString()
-                    ivPoster.load(item.poster?.toPosterImageUrl()){
-                        error(R.mipmap.ic_launcher)
-                        fallback(R.mipmap.ic_launcher)
-                        placeholder(R.mipmap.ic_launcher)
-                    }
+                    val date = item.releaseDate ?: item.firstAirDate
+
+                    tvTitle.text = item.title ?: item.name
+                    tvReleaseDate.text = date.toDateFormat("yyyy-MM-dd", "dd MMM yyyy")
+
+                    tvVoteCount.text = root.resources.getString(R.string.d_votes, item.voteCount )
+
+                    ivPoster.load(item.poster?.toPosterImageUrl())
                 }
             }
         }

@@ -9,12 +9,19 @@
         android:id="@+id/appBarLayout"
         layout="@layout/app_bar" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvContents"
+    <com.codemasters.tmdb.ui.widgets.MultiStateLayout
+        android:id="@+id/layoutContentState"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:listitem="@layout/row_wish_list" />
+        app:contentLayout="@id/rvContents"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvContents"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/row_wish_list" />
+    </com.codemasters.tmdb.ui.widgets.MultiStateLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

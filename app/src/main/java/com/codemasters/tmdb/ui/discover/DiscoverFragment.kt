@@ -9,10 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.codemasters.tmdb.R
-import com.codemasters.tmdb.data.model.Movie
-import com.codemasters.tmdb.data.model.StatefulData
-import com.codemasters.tmdb.data.model.Trending
-import com.codemasters.tmdb.data.model.TvSeries
+import com.codemasters.tmdb.data.model.*
 import com.codemasters.tmdb.databinding.FragmentDiscoverBinding
 import com.codemasters.tmdb.ui.widgets.MultiStateLayout
 
@@ -69,7 +66,7 @@ class DiscoverFragment : Fragment(R.layout.fragment_discover) {
     private fun populatePopularMovies(results: List<Movie>?) {
         val adapter = HorizontalListAdapter<Movie> { movie ->
             val direction =
-                DiscoverFragmentDirections.actionDiscoverFragmentToContentDetailsFragment(0, movie.id)
+                DiscoverFragmentDirections.actionDiscoverFragmentToContentDetailsFragment(MediaType.movie.name, movie.id)
             findNavController().navigate(direction)
         }
 
@@ -112,7 +109,7 @@ class DiscoverFragment : Fragment(R.layout.fragment_discover) {
     private fun populatePopularTvShows(results: List<TvSeries>?) {
         val adapter = HorizontalListAdapter<TvSeries> { tvShow ->
             val direction =
-                DiscoverFragmentDirections.actionDiscoverFragmentToContentDetailsFragment(1, tvShow.id)
+                DiscoverFragmentDirections.actionDiscoverFragmentToContentDetailsFragment(MediaType.tv.name, tvShow.id)
             findNavController().navigate(direction)
         }
 
@@ -152,9 +149,9 @@ class DiscoverFragment : Fragment(R.layout.fragment_discover) {
     }
 
     private fun populateTrendingContent(results: List<Trending>?) {
-        val adapter = HorizontalListAdapter<Trending> { movie ->
+        val adapter = HorizontalListAdapter<Trending> { trending ->
             val direction =
-                DiscoverFragmentDirections.actionDiscoverFragmentToContentDetailsFragment(0, movie.id)
+                DiscoverFragmentDirections.actionDiscoverFragmentToContentDetailsFragment(trending.mediaType, trending.id)
             findNavController().navigate(direction)
         }
 

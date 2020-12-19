@@ -30,12 +30,12 @@ android {
     productFlavors {
         grameenphone {
             dimension "version"
-            resValue "string", "app_name", "Codemasters Grameephone"
+            resValue "string", "app_name", "Grameephone Codemasters"
         }
 
         telenor {
             dimension "version"
-            resValue "string", "app_name", "Codemasters Telenor"
+            resValue "string", "app_name", "Telenor Codemasters"
         }
     }
 

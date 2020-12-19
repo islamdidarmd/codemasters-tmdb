@@ -6,7 +6,6 @@ import com.codemasters.tmdb.data.model.*
 import com.codemasters.tmdb.data.remote.repository.ContentRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
 
 class ContentViewModel(application: android.app.Application) : AndroidViewModel(application) {
@@ -19,13 +18,13 @@ class ContentViewModel(application: android.app.Application) : AndroidViewModel(
     }
 
     fun getContentDetails(
-        contentType: ContentType,
+        mediaType: String,
         id: Int
     ): LiveData<StatefulData<ContentDetails>> {
         return liveData(Dispatchers.Default) {
             emit(StatefulData.loading())
 
-            val response = repository.getContentDetails(contentType, id)
+            val response = repository.getContentDetails(mediaType, id)
 
             if (response?.success != false) {
                 emit(StatefulData.success(response))

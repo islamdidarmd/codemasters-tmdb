@@ -32,8 +32,7 @@
         tools:layout="@layout/fragment_content_details">
         <argument
             android:name="type"
-            android:defaultValue="0"
-            app:argType="integer" />
+            app:argType="string" />
         <argument
             android:name="content_id"
             android:defaultValue="-1"

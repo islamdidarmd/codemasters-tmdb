@@ -12,7 +12,7 @@ data class ContentDetails(
     val id: Int,
 
     @SerializedName("content_type")
-    val content_type: Int,
+    val content_type: String,
 
     @SerializedName("success")
     val success: Boolean? = null,

@@ -13,6 +13,7 @@ import com.codemasters.tmdb.databinding.FragmentWishListBinding
 import com.codemasters.tmdb.ui.content_details.ContentViewModel
 import com.codemasters.tmdb.ui.discover.DiscoverFragmentDirections
 import com.codemasters.tmdb.ui.discover.HorizontalListAdapter
+import com.codemasters.tmdb.ui.widgets.MultiStateLayout
 import kotlinx.coroutines.flow.catch
 
 class WishListFragment : Fragment(R.layout.fragment_wish_list) {
@@ -30,7 +31,7 @@ class WishListFragment : Fragment(R.layout.fragment_wish_list) {
 
     private fun setUpUI() {
         _binding?.apply {
-            appBarLayout.toolbar.navigationIcon = resources.getDrawable(R.drawable.ic_arrow_back_24)
+            appBarLayout.toolbar.setNavigationIcon(R.drawable.ic_arrow_back_24)
             appBarLayout.toolbar.setNavigationOnClickListener { requireActivity().onBackPressed() }
         }
     }
@@ -39,6 +40,9 @@ class WishListFragment : Fragment(R.layout.fragment_wish_list) {
         viewModel.getWishList()
             .catch { exception ->
                 exception.printStackTrace()
+                _binding?.apply {
+                    layoutContentState.setState(MultiStateLayout.State.EMPTY)
+                }
             }
             .asLiveData().observe(viewLifecycleOwner) { list ->
                 populateList(list)
@@ -55,10 +59,16 @@ class WishListFragment : Fragment(R.layout.fragment_wish_list) {
             findNavController().navigate(direction)
         }
 
+        adapter.submitList(list)
         _binding?.apply {
             rvContents.adapter = adapter
+
+            if (list.isNullOrEmpty()) {
+                layoutContentState.setState(MultiStateLayout.State.EMPTY)
+            } else {
+                layoutContentState.setState(MultiStateLayout.State.CONTENT)
+            }
         }
-        adapter.submitList(list)
     }
 
     override fun onDestroyView() {
