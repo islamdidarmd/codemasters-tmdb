@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/appBarLayout"
+        layout="@layout/app_bar" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.codemasters.tmdb.ui.widgets.MultiStateLayout
+                android:id="@+id/layoutPopularMoviesState"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:contentLayout="@id/layoutPopularMovies">
+
+                <include
+                    android:id="@+id/layoutPopularMovies"
+                    layout="@layout/layout_discover_horizontal" />
+            </com.codemasters.tmdb.ui.widgets.MultiStateLayout>
+
+            <com.codemasters.tmdb.ui.widgets.MultiStateLayout
+                android:id="@+id/layoutPopularTvShowsState"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:contentLayout="@id/layoutPopularTvShows">
+
+                <include
+                    android:id="@+id/layoutPopularTvShows"
+                    layout="@layout/layout_discover_horizontal" />
+            </com.codemasters.tmdb.ui.widgets.MultiStateLayout>
+
+            <com.codemasters.tmdb.ui.widgets.MultiStateLayout
+                android:id="@+id/layoutTrendingContentState"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:contentLayout="@id/layoutTrendingContent">
+
+                <include
+                    android:id="@+id/layoutTrendingContent"
+                    layout="@layout/layout_discover_horizontal" />
+            </com.codemasters.tmdb.ui.widgets.MultiStateLayout>
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -2,4 +2,9 @@
     <string name="app_name">Codemasters TMDB</string>
     <string name="discover">Discover</string>
     <string name="wish_list">Wish list</string>
+    <string name="popular_movies">Popular Movies</string>
+    <string name="view_more">View More</string>
+    <string name="no_data_available">No data available</string>
+    <string name="popular_tv_series">Popular Tv Series</string>
+    <string name="trending">Trending</string>
 </resources>

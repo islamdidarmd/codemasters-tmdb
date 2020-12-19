@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ShapeAppearanceOverlay.Poster">
+        <item name="cornerSize">8%</item>
+    </style>
+
+    <!--Multi State Layout attrs-->
+    <declare-styleable name="app">
+        <attr name="loadingLayout" format="reference" />
+        <attr name="emptyLayout" format="reference" />
+        <attr name="contentLayout" format="reference" />
+    </declare-styleable>
+    <!---->
+</resources>
