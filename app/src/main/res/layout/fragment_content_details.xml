@@ -87,11 +87,12 @@
     </com.codemasters.tmdb.ui.widgets.MultiStateLayout>
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         android:text="@string/add_to_wish_list"
         android:textAllCaps="false"
-        tools:icon="@drawable/ic_favorite_filled_24" />
+        app:icon="@drawable/ic_favorite_border_24" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

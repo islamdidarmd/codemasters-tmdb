@@ -8,4 +8,5 @@
     <string name="popular_tv_series">Popular Tv Series</string>
     <string name="trending">Trending</string>
     <string name="add_to_wish_list">Add to Wish List</string>
+    <string name="remove_from_wish_list">Remove from wish list</string>
 </resources>

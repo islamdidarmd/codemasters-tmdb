@@ -17,8 +17,13 @@
 
     <fragment
         android:id="@+id/wishListFragment"
-        android:name="com.codemasters.tmdb.ui.WishListFragment"
-        android:label="Wish List" />
+        android:name="com.codemasters.tmdb.ui.wish_list.WishListFragment"
+        tools:layout="@layout/fragment_wish_list"
+        android:label="Wish List" >
+        <action
+            android:id="@+id/action_wishListFragment_to_contentDetailsFragment"
+            app:destination="@id/contentDetailsFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/contentDetailsFragment"

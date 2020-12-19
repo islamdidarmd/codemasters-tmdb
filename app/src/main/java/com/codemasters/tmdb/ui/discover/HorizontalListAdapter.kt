@@ -68,7 +68,7 @@ class HorizontalListAdapter<T>(
             return when (oldItem) {
                 is Movie -> oldItem.title == (newItem as Movie).title
                 is TvSeries -> oldItem.title == (newItem as TvSeries).title
-                is Trending -> oldItem.title == (newItem as TvSeries).title
+                is Trending -> oldItem.title == (newItem as Trending).title
                 else -> false
             }
         }
@@ -77,7 +77,7 @@ class HorizontalListAdapter<T>(
             return when (oldItem) {
                 is Movie -> oldItem.poster == (newItem as Movie).poster
                 is TvSeries -> oldItem.poster == (newItem as TvSeries).poster
-                is Trending -> oldItem.poster == (newItem as TvSeries).poster
+                is Trending -> oldItem.poster == (newItem as Trending).poster
                 else -> false
             }
         }
