@@ -3,6 +3,7 @@ package com.codemasters.tmdb.data.remote
 import com.codemasters.tmdb.data.model.*
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
@@ -20,4 +21,10 @@ interface ApiService {
 
     @GET("trending/all/week")
     suspend fun getTrendingContent(): Response<PaginatedResponse<Trending>?>
+
+    @GET("/3/{content_type}/{id}")
+    suspend fun getContentDetails(
+        @Path("content_type") contentType: String,
+        @Path("id") id: Int
+    ): Response<ContentDetails?>
 }

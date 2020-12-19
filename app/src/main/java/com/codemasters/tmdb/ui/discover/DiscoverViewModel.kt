@@ -4,12 +4,12 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import com.codemasters.tmdb.data.model.*
-import com.codemasters.tmdb.data.remote.repository.TMDBRepository
+import com.codemasters.tmdb.data.remote.repository.ContentRepository
 import kotlinx.coroutines.Dispatchers
 
 class DiscoverViewModel : ViewModel() {
     private val repository by lazy {
-        TMDBRepository()
+        ContentRepository()
     }
 
     fun getPopularMovies(): LiveData<StatefulData<PaginatedResponse<Movie>>?> {

@@ -3,6 +3,9 @@ package com.codemasters.tmdb.data.model
 import com.google.gson.annotations.SerializedName
 
 data class TvSeries(
+    @SerializedName("id")
+    val id: Int,
+
     @SerializedName("name")
     val title: String,
 

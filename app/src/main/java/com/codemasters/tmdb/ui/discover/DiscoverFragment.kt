@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -31,7 +32,7 @@ class DiscoverFragment : Fragment(R.layout.fragment_discover) {
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
         super.onViewStateRestored(savedInstanceState)
         if (savedInstanceState != null) {
-         //   setUpUI()
+            //   setUpUI()
         }
     }
 
@@ -67,7 +68,9 @@ class DiscoverFragment : Fragment(R.layout.fragment_discover) {
 
     private fun populatePopularMovies(results: List<Movie>?) {
         val adapter = HorizontalListAdapter<Movie> { movie ->
-
+            val direction =
+                DiscoverFragmentDirections.actionDiscoverFragmentToContentDetailsFragment(0, movie.id)
+            findNavController().navigate(direction)
         }
 
         _binding?.apply {
@@ -108,7 +111,9 @@ class DiscoverFragment : Fragment(R.layout.fragment_discover) {
 
     private fun populatePopularTvShows(results: List<TvSeries>?) {
         val adapter = HorizontalListAdapter<TvSeries> { tvShow ->
-
+            val direction =
+                DiscoverFragmentDirections.actionDiscoverFragmentToContentDetailsFragment(1, tvShow.id)
+            findNavController().navigate(direction)
         }
 
         _binding?.apply {
@@ -147,15 +152,17 @@ class DiscoverFragment : Fragment(R.layout.fragment_discover) {
     }
 
     private fun populateTrendingContent(results: List<Trending>?) {
-        val adapter = HorizontalListAdapter<Trending> { tvShow ->
-
+        val adapter = HorizontalListAdapter<Trending> { movie ->
+            val direction =
+                DiscoverFragmentDirections.actionDiscoverFragmentToContentDetailsFragment(0, movie.id)
+            findNavController().navigate(direction)
         }
 
         _binding?.apply {
             adapter.submitList(results)
             layoutTrendingContent.tvTitle.text = getString(R.string.trending)
             layoutTrendingContent.rvList.layoutManager =
-                GridLayoutManager(requireContext(),3)
+                GridLayoutManager(requireContext(), 3)
             layoutTrendingContent.rvList.adapter = adapter
 
             if (results == null) {
@@ -164,5 +171,10 @@ class DiscoverFragment : Fragment(R.layout.fragment_discover) {
                 layoutTrendingContentState.setState(MultiStateLayout.State.CONTENT)
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

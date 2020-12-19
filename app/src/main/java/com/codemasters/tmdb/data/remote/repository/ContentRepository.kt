@@ -1,15 +1,12 @@
 package com.codemasters.tmdb.data.remote.repository
 
-import com.codemasters.tmdb.data.model.Movie
-import com.codemasters.tmdb.data.model.PaginatedResponse
-import com.codemasters.tmdb.data.model.Trending
-import com.codemasters.tmdb.data.model.TvSeries
+import com.codemasters.tmdb.data.model.*
 import com.codemasters.tmdb.data.remote.ApiClient.createApiService
 import com.codemasters.tmdb.data.remote.ApiService
 import com.google.gson.Gson
 import retrofit2.Response
 
-class TMDBRepository {
+class ContentRepository : BaseRepository() {
     suspend fun getPopularMovies(): PaginatedResponse<Movie>? {
         return try {
             val api = createApiService<ApiService>()
@@ -43,11 +40,14 @@ class TMDBRepository {
         }
     }
 
-    private inline fun <reified T> handleApiResponse(response: Response<T>): T? {
-        return if (response.isSuccessful) response.body()
-        else {
-            val parsed: T? = Gson().fromJson(response.errorBody()?.string(), T::class.java)
-            parsed
+    suspend fun getContentDetails(contentType: ContentType, id: Int): ContentDetails? {
+        return try {
+            val api = createApiService<ApiService>()
+            val response = api.getContentDetails(contentType.name, id)
+            handleApiResponse(response)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            return null
         }
     }
 }

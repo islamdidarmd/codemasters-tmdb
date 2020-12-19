@@ -2,6 +2,7 @@ package com.codemasters.tmdb.utils
 
 const val BASE_URL = "https://api.themoviedb.org/3/"
 const val POSTER_BASE_URL = "https://image.tmdb.org/t/p/w342"
+const val BACKDROP_BASE_URL = "https://image.tmdb.org/t/p/w780"
 
 const val OKHTTP_CONNECT_TIMEOUT = 30L
 const val OKHTTP_READ_TIMEOUT = 30L

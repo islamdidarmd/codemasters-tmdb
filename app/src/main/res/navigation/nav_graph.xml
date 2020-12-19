@@ -9,11 +9,29 @@
         android:id="@+id/discoverFragment"
         android:name="com.codemasters.tmdb.ui.discover.DiscoverFragment"
         android:label="Discover"
-        tools:layout="@layout/fragment_discover" />
+        tools:layout="@layout/fragment_discover">
+        <action
+            android:id="@+id/action_discoverFragment_to_contentDetailsFragment"
+            app:destination="@id/contentDetailsFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/wishListFragment"
         android:name="com.codemasters.tmdb.ui.WishListFragment"
         android:label="Wish List" />
 
+    <fragment
+        android:id="@+id/contentDetailsFragment"
+        android:name="com.codemasters.tmdb.ui.content_details.ContentDetailsFragment"
+        android:label="Content Details"
+        tools:layout="@layout/fragment_content_details">
+        <argument
+            android:name="type"
+            android:defaultValue="0"
+            app:argType="integer" />
+        <argument
+            android:name="content_id"
+            android:defaultValue="-1"
+            app:argType="integer" />
+    </fragment>
 </navigation>
